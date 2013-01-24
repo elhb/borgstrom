@@ -15,9 +15,10 @@ NA""",
       url='NA',
       license='NA',
       packages=find_packages(exclude=['ez_setup', 'examples', 'tests']),
+      scripts = ['scripts/getting_data.py'],
       include_package_data=True,
       zip_safe=True,
-      install_requires=[
+      install_requires=['untangle'
           # -*- Extra requirements: -*-
       ],
       entry_points="""
