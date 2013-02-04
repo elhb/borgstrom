@@ -1,9 +1,14 @@
 setup.cfg
 setup.py
 borgstrom/__init__.py
+borgstrom/session2.py
+borgstrom/session3.py
 borgstrom.egg-info/PKG-INFO
 borgstrom.egg-info/SOURCES.txt
 borgstrom.egg-info/dependency_links.txt
 borgstrom.egg-info/entry_points.txt
+borgstrom.egg-info/requires.txt
 borgstrom.egg-info/top_level.txt
 borgstrom.egg-info/zip-safe
+scripts/check_repo.py
+scripts/getting_data.py

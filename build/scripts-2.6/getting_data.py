@@ -1,4 +1,4 @@
-#! /usr/bin/env python2.7
+#!/Users/erikborgstrom/.virtualenvs/py2.7/bin/python
 
 from borgstrom.session2 import *
 
