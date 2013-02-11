@@ -1,3 +1,4 @@
 build/*
 dist/*
 borgstrom.egg-info/*
+.DS_Store
