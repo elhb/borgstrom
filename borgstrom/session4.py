@@ -10,6 +10,7 @@ import calendar
 
 def main():
     data_frame = get_data_frame()
+    df = data_frame
     print getWDandH(data_frame)
 
 def get_credentials():
@@ -54,10 +55,26 @@ def get_data_frame():
 def getWDandH(df):
     days = df.index.dayofweek
     hours = df.index.hour
-    entries = data_frame.count(1)
-    #VAFAN!!!!!
-    for i in zip(days,zip(hours,entries))
-    return
+    counts = df.count(1)
+    days_dict = {}
+    hour_dict = {}
+    
+    for [day,[hour,count]] in zip(days,zip(hours,counts)):
+        #print calendar.day_name[day], hour, count
+        try: days_dict[calendar.day_name[day]] += count
+        except KeyError: days_dict[calendar.day_name[day]] = count
+        try: hour_dict[hour] += count
+        except KeyError: hour_dict[hour] = count
+    
+    print 'hours'
+    for hour in hour_dict:
+        print hour, hour_dict[hour]
+        
+    print 'days'
+    for day in days_dict:
+        print day, days_dict[day]
+    
+    return ''
     
 if __name__ == "__main__":
     main()
