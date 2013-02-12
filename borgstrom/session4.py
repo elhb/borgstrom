@@ -66,15 +66,23 @@ def getWDandH(df):
         try: hour_dict[hour] += count
         except KeyError: hour_dict[hour] = count
     
-    print 'hours'
+    maxhour = [0,0]
+    print 'hours:'
     for hour in hour_dict:
         print hour, hour_dict[hour]
-        
+        if maxhour[0] < hour_dict[hour]:
+            maxhour[0] = hour_dict[hour]
+            maxhour[1] = hour
+    print ''
+    maxday = [0,'']
     print 'days'
     for day in days_dict:
         print day, days_dict[day]
-    
-    return ''
+        if maxday[0] < days_dict[day]:
+            maxday[0] = days_dict[day]
+            maxday[1] = day
+    print ''
+    return 'The day of the week with the most commits is '+maxday[1]+' with '+str(maxday[0])+' commits in total.\n'+'The hour of the day with the most commits is '+str(maxhour[1])+' with '+str(maxhour[0])+' commits in total.\n'
     
 if __name__ == "__main__":
     main()

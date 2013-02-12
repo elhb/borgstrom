@@ -1,1 +1,36 @@
-# no content added
+# Observation:
+the output from my program clearly states:
+day: wednesday and hour: 16
+my conclusion is that most people start work on the assignment or commits directly after the lecture and that the actual work then is more spread during hours and days.
+one can also conclude that commits during weekends are rare, as well as after hour 21 and before hour 8.
+
+hours:
+2 2
+7 2
+8 9
+9 16
+10 23
+11 20
+12 28
+13 22
+14 24
+15 23
+16 54
+17 9
+18 3
+19 2
+20 11
+21 2
+22 2
+
+days
+Monday 29
+Tuesday 48
+Friday 32
+Wednesday 106
+Thursday 31
+Sunday 3
+Saturday 3
+
+The day of the week with the most commits is Wednesday with 106 commits in total.
+The hour of the day with the most commits is 16 with 54 commits in total.
