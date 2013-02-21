@@ -10,7 +10,7 @@ import calendar
 
 def main():
     data_frame = get_data_frame()
-    df = data_frame
+    #df = data_frame
     print getWDandH(data_frame)
 
 def get_credentials():
@@ -26,12 +26,11 @@ def get_data_frame():
     repos = requests.get("https://api.github.com/orgs/pythonkurs/repos", auth=(usrname, password))
     repos_data = repos.json()
 
-    allCommitS = {}
+    commits_time_list = []
+    commits_messages_list = []
 
+#    import pdb; pdb.set_trace()
     for repo in repos_data:
-
-        commits_time_list = []
-        commits_messages_list = []
     
         try: pass#sys.stderr.write( 'processing user: ' + repo['name'] + ' ...\n' )
         except TypeError: print 'Error: probably faulty usrname and password.\n'
@@ -45,10 +44,10 @@ def get_data_frame():
             try:
                 commits_time_list.append(parser.parse(commit['commit']['author']['date']))
                 commits_messages_list.append(commit['commit']['message'])
-            except TypeError: pass # EMPTY COMMIT LIST
+            except TypeError: print 'repo '+repo['name']+' has no commits, skipping ...', # EMPTY COMMIT LIST
+        print 'added all the commits from repo '+repo['name']+' to lists'
 
-        if len(commits_messages_list): allCommitS[repo['name']] = (Series(commits_messages_list, index = commits_time_list))
-
+    allCommitS = Series(commits_messages_list, index = commits_time_list)
     dataframe = DataFrame(allCommitS)
     return dataframe
 
