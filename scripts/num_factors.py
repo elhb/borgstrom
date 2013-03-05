@@ -1,25 +1,34 @@
 #
 
 def main():
+	indata = check_indata()
 
 	lowest_number = 2
 	highest_number = 500000
 
 	# single process
-	timer1 = Timer(verbose=True)
+	timer = Timer(verbose=True)
 	counter = Counter()
-	with timer1:
-		for i in xrange(lowest_number,highest_number+1): counter.add(factorize(i))
-		print 'Result from single process:      ', counter, '\t',
+	if indata.mode == 's':
+		with timer:
+			for i in xrange(lowest_number,highest_number+1): counter.add(factorize(i))
+			print 'Result from single process:      ', counter, '\t',
+	if indata.mode == 'm':
+		import multiprocessing
+		with timer:
+			WorkerPool = multiprocessing.Pool(2)
+			results = WorkerPool.imap_unordered(factorize,xrange(lowest_number,highest_number+1),chunksize=10)
+			for factors in results: counter.add(factors)
+			print 'Result from multiprocessing.Pool:', counter, '\t',
 
-	timer2 = Timer(verbose=True)
-	counter = Counter()
-	import multiprocessing
-	with timer2:
-		WorkerPool = multiprocessing.Pool(2)
-		results = WorkerPool.imap_unordered(factorize,xrange(lowest_number,highest_number+1),chunksize=10)
-		for factors in results: counter.add(factors)
-		print 'Result from multiprocessing.Pool:', counter, '\t',
+def check_indata():
+	import argparse
+	import sys
+	argparser = argparse.ArgumentParser(description='Script for counting uniqe factors.',formatter_class=argparse.RawTextHelpFormatter,)
+	argparser.add_argument('-mode',dest='mode',metavar='X',type=str,required=True,default='.',help='s m or p (default is s).')
+	indata = argparser.parse_args()
+	if indata.mode not in ['s','m','p']: raise ValueError, ' mode has to be s m or p!!'
+	return indata
 
 def factorize(n): # function from Valentin
     if n < 2:
