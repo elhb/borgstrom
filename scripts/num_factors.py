@@ -4,15 +4,15 @@ def main():
 	indata = check_indata()
 
 	lowest_number = 2
-	highest_number = 1000#500000
+	highest_number = 500000
 
-	if indata.mode == 's' or 'all':
+	if indata.mode == 's' or indata.mode == 'all':
 		timer = Timer(verbose=True)
 		counter = Counter()
 		with timer:
 			for i in xrange(lowest_number,highest_number+1): counter.add(factorize(i))
 			print 'Result from single process:      ', counter, '\t',
-	if indata.mode == 'm' or 'all':
+	if indata.mode == 'm' or indata.mode == 'all':
 		timer = Timer(verbose=True)
 		counter = Counter()
 		import multiprocessing
@@ -21,7 +21,7 @@ def main():
 			results = WorkerPool.imap_unordered(factorize,xrange(lowest_number,highest_number+1),chunksize=10)
 			for factors in results: counter.add(factors)
 			print 'Result from multiprocessing.Pool:', counter, '\t',
-	if indata.mode == 'p' or 'all':
+	if indata.mode == 'p' or indata.mode == 'all':
 		timer = Timer(verbose=True)
 		counter = Counter()
 		with timer:
