@@ -14,3 +14,6 @@ python -m line_profiler scripts/pyecm.py.lprof > scripts/pyecm.py.lprof.output.t
 
 # comment "#" line 1483 and uncomment line 1484 then do memory profiling
 python -m memory_profiler scripts/pyecm.py 123456789123456789123456789123456789 > scripts/pyecm.py.memory_profiler
+
+mkdir profile_results -p
+mv scripts/pyecm.py.* profile_results/
