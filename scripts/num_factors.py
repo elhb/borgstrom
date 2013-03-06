@@ -12,6 +12,7 @@ def main():
 		with timer:
 			for i in xrange(lowest_number,highest_number+1): counter.add(factorize(i))
 			print 'Result from single process:      ', counter, '\t',
+
 	if indata.mode == 'm' or indata.mode == 'all':
 		timer = Timer(verbose=True)
 		counter = Counter()
@@ -21,6 +22,7 @@ def main():
 			results = WorkerPool.imap_unordered(factorize,xrange(lowest_number,highest_number+1),chunksize=10)
 			for factors in results: counter.add(factors)
 			print 'Result from multiprocessing.Pool:', counter, '\t',
+
 	if indata.mode == 'p' or indata.mode == 'all':
 		timer = Timer(verbose=True)
 		counter = Counter()
@@ -53,12 +55,14 @@ def main():
 							p += 2
 						else:
 							p += 1
+
+					results.append(factors)
 					seen = set()
 					seen_add = seen.add
 					uniq = [ x for x in factors if x not in seen and not seen_add(x)]
-					results.append(factors)
 					try: uniq_count[len(uniq)] += 1
 					except KeyError: uniq_count[len(uniq)] = 1
+
 				return uniq_count
 	
 			dview.scatter('numbers', xrange(lowest_number,highest_number+1), block=True)
