@@ -1,0 +1,146 @@
+Factoring 100000000000000000000000000000000000000000000000000:
+2
+2
+2
+2
+2
+2
+2
+2
+2
+2
+2
+2
+2
+2
+2
+2
+2
+2
+2
+2
+2
+2
+2
+2
+2
+2
+2
+2
+2
+2
+2
+2
+2
+2
+2
+2
+2
+2
+2
+2
+2
+2
+2
+2
+2
+2
+2
+2
+2
+2
+5
+5
+5
+5
+5
+5
+5
+5
+5
+5
+5
+5
+5
+5
+5
+5
+5
+5
+5
+5
+5
+5
+5
+5
+5
+5
+5
+5
+5
+5
+5
+5
+5
+5
+5
+5
+5
+5
+5
+5
+5
+5
+5
+5
+5
+5
+5
+5
+5
+5
+         13912 function calls in 0.124 CPU seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    0.000    0.000 <string>:1(<module>)
+        1    0.000    0.000    0.000    0.000 __future__.py:48(<module>)
+        1    0.000    0.000    0.000    0.000 __future__.py:74(_Feature)
+        7    0.000    0.000    0.000    0.000 __future__.py:75(__init__)
+        1    0.000    0.000    0.000    0.000 os.py:746(urandom)
+        1    0.000    0.000    0.000    0.000 pyecm.py:1072(isprime)
+      101    0.005    0.000    0.102    0.001 pyecm.py:1232(factors)
+        2    0.000    0.000    0.000    0.000 pyecm.py:1284(is_switch)
+     6701    0.095    0.000    0.097    0.000 pyecm.py:130(next_prime)
+        2    0.000    0.000    0.000    0.000 pyecm.py:1313(valid_input)
+        1    0.000    0.000    0.102    0.102 pyecm.py:1354(command_line)
+        1    0.000    0.000    0.102    0.102 pyecm.py:1432(main)
+        1    0.002    0.002    0.106    0.106 pyecm.py:15(<module>)
+        3    0.000    0.000    0.000    0.000 pyecm.py:181(mpz)
+        1    0.000    0.000    0.000    0.000 pyecm.py:234(ts)
+        1    0.000    0.000    0.000    0.000 pyecm.py:397(could_be_prime)
+        1    0.000    0.000    0.000    0.000 pyecm.py:453(fastprime)
+        1    0.000    0.000    0.000    0.000 pyecm.py:517(inv_const)
+        1    0.002    0.002    0.002    0.002 random.py:40(<module>)
+        1    0.000    0.000    0.000    0.000 random.py:641(WichmannHill)
+        1    0.000    0.000    0.000    0.000 random.py:71(Random)
+        1    0.000    0.000    0.000    0.000 random.py:791(SystemRandom)
+        1    0.000    0.000    0.000    0.000 random.py:90(__init__)
+        1    0.000    0.000    0.000    0.000 random.py:99(seed)
+        1    0.000    0.000    0.000    0.000 {binascii.hexlify}
+        1    0.000    0.000    0.000    0.000 {eval}
+        1    0.018    0.018    0.124    0.124 {execfile}
+        1    0.000    0.000    0.000    0.000 {function seed at 0x1007bec08}
+        8    0.000    0.000    0.000    0.000 {len}
+        1    0.000    0.000    0.000    0.000 {math.exp}
+     7058    0.002    0.000    0.002    0.000 {math.log}
+        1    0.000    0.000    0.000    0.000 {math.sqrt}
+        1    0.000    0.000    0.000    0.000 {max}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+        1    0.000    0.000    0.000    0.000 {method 'replace' of 'str' objects}
+        1    0.000    0.000    0.000    0.000 {posix.close}
+        1    0.000    0.000    0.000    0.000 {posix.open}
+        1    0.000    0.000    0.000    0.000 {posix.read}
+
+
