@@ -1471,7 +1471,7 @@ def main():
 	else:
 		interactive(veb, ra, ov, pr)
 
-@profile
+#@profile
 def profile_main():
 	print "test"
 	n = int(sys.argv[-1])
@@ -1480,5 +1480,5 @@ def profile_main():
 		print factor
 
 if __name__ == '__main__':
-	#main()
-	profile_main()
+	main()
+	#profile_main()
