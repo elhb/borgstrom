@@ -1471,7 +1471,7 @@ def main():
 	else:
 		interactive(veb, ra, ov, pr)
 
-#@profile
+@profile
 def profile_main():
 	print "test"
 	n = int(sys.argv[-1])

@@ -13,7 +13,9 @@ mv pyecm.py.lprof scripts/
 python -m line_profiler scripts/pyecm.py.lprof > scripts/pyecm.py.lprof.output.txt
 
 # comment "#" line 1483 and uncomment line 1484 then do memory profiling
-python -m memory_profiler scripts/pyecm.py 123456789123456789123456789123456789 > scripts/pyecm.py.memory_profiler
+#python -m memory_profiler scripts/pyecm.py 123456789123456789123456789123456789 > scripts/pyecm.py.memory_profiler
+# now using a "better" integer
+python -m memory_profiler scripts/pyecm.py 12348464686137167187648397917 > profile_results/pyecm.py.memory_profiler
 
 mkdir profile_results -p
 mv scripts/pyecm.py.* profile_results/
