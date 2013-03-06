@@ -4,7 +4,7 @@ def main():
 	indata = check_indata()
 
 	lowest_number = 2
-	highest_number = 10000#500000
+	highest_number = 500000
 
 	if indata.mode == 's' or indata.mode == 'all':
 		timer = Timer(verbose=True)
@@ -33,6 +33,7 @@ def main():
 			#@dview.parallel(block=True)
 			def factorizeIPP(): # function from Valentin
 				results = []
+				uniq_count = {}
 				for n in numbers:
 					if n < 2:
 						return []
@@ -52,16 +53,23 @@ def main():
 							p += 2
 						else:
 							p += 1
+					seen = set()
+					seen_add = seen.add
+					uniq = [ x for x in factors if x not in seen and not seen_add(x)]
 					results.append(factors)
-				return results
+					try: uniq_count[len(uniq)] += 1
+					except KeyError: uniq_count[len(uniq)] = 1
+				return uniq_count
 	
 			dview.scatter('numbers', xrange(lowest_number,highest_number+1), block=True)
-			results_per_engine = dview.apply_sync(factorizeIPP)
+			list_of_dists = dview.apply_sync(factorizeIPP)
 
-			for list_of_factors in results_per_engine:
-				for factors in list_of_factors:
-					counter.add(factors)
-
+			total = {}
+			for dist in list_of_dists:
+				for uniq,count in dist.iteritems():
+					try: total[uniq] += count
+					except KeyError: total[uniq] = count
+			counter = total
 
 			print 'Result from IPython.parallel:    ', counter, '\t',
 
