@@ -4,7 +4,7 @@ def main():
 	indata = check_indata()
 
 	lowest_number = 2
-	highest_number = 500000
+	highest_number = 10000#500000
 
 	if indata.mode == 's' or indata.mode == 'all':
 		timer = Timer(verbose=True)
@@ -30,29 +30,39 @@ def main():
 			dview = cli[:]
 #			print zip(cli.ids,dview.apply_sync(get_pid))
 	
-			@dview.parallel(block=True)
-			def factorizeIPP(n): # function from Valentin
-				if n < 2:
-					return []
-				factors = []
-				p = 2
-				while True:
-					if n == 1:
-						return factors
-					r = n % p
-					if r == 0:
-						factors.append(p)
-						n = n / p
-					elif p * p >= n:
-						factors.append(n)
-						return factors
-					elif p > 2:
-						p += 2
-					else:
-						p += 1
+			#@dview.parallel(block=True)
+			def factorizeIPP(): # function from Valentin
+				results = []
+				for n in numbers:
+					if n < 2:
+						return []
+					factors = []
+					p = 2
+					while True:
+						if n == 1:
+							break#return factors
+						r = n % p
+						if r == 0:
+							factors.append(p)
+							n = n / p
+						elif p * p >= n:
+							factors.append(n)
+							break#return factors
+						elif p > 2:
+							p += 2
+						else:
+							p += 1
+					results.append(factors)
+				return results
 	
-			for factors in factorizeIPP.map(xrange(lowest_number,highest_number+1)):
-				counter.add(factors)
+			dview.scatter('numbers', xrange(lowest_number,highest_number+1), block=True)
+			results_per_engine = dview.apply_sync(factorizeIPP)
+
+			for list_of_factors in results_per_engine:
+				for factors in list_of_factors:
+					counter.add(factors)
+
+
 			print 'Result from IPython.parallel:    ', counter, '\t',
 
 def get_pid(): # just for testing

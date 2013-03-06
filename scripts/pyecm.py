@@ -1480,5 +1480,5 @@ def profile_main():
 		print factor
 
 if __name__ == '__main__':
-	main()
-	#profile_main()
+	#main()
+	profile_main()
