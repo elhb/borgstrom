@@ -4,7 +4,7 @@ def main():
 	indata = check_indata()
 
 	lowest_number = 2
-	highest_number = 500000
+	highest_number = 10#500000
 
 	if indata.mode == 's' or indata.mode == 'all':
 		timer = Timer(verbose=True)
